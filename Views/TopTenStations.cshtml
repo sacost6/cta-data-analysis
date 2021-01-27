@@ -1,0 +1,61 @@
+@page
+@model TopTenStationsModel
+@{
+  ViewData["Title"] = "Top Ten CTA Stations by Line";
+}
+
+<h2>Top Ten Stations by Line</h2>  
+
+<br />
+Your search string: "@Model.Input"
+<br />
+
+<br />
+# of stations found: @Model.StationList.Count
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                ID
+            </th>  
+						<th>  
+                Name
+            </th>  
+            <th>  
+                Total Daily Ridership 
+            </th>  
+           
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.StationList)  
+        {  
+            <tr>  
+                <td>  
+										@item.StationID
+                </td>  
+                <td>  
+                    @item.StationName
+                </td> 
+								<td>  
+                    @item.AvgDailyRidership
+                </td> 
+         
+            </tr>  
+        }  
+    </tbody>  
+</table> 
+
